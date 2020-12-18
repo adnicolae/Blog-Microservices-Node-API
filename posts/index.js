@@ -33,7 +33,8 @@ app.post('/posts', async (req, res) => {
     type: 'POST_CREATED',
     data: {
       id,
-      title
+      title,
+      body
     }
   });
 

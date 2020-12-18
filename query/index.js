@@ -22,9 +22,9 @@ app.post('/events', (req, res) => {
   const { type, data } = req.body;
 
   if (type === 'POST_CREATED') {
-    const { id, title } = data;
+    const { id, title, body } = data;
 
-    posts[id] = { id, title, comments: [] };
+    posts[id] = { id, title, body, comments: [] };
   }
 
   if (type === 'COMMENT_CREATED') {
