@@ -9,14 +9,14 @@ app.use(bodyParser.json());
  * POST /events
  */
 app.post('/events', async (req, res) => {
-  console.log('RECEIVED_EVENT: ', type);
-
   const { type, data } = req.body;
 
-  if (type === 'COMMENT_CREATED') {
-    const { id, content, status, postId } = data;
+  console.log('RECEIVED_EVENT: ', type);
 
-    status = content.includes('orange') ? 'rejected' : 'approved';
+  if (type === 'COMMENT_CREATED') {
+    const { id, content, postId } = data;
+
+    const status = content.includes('orange') ? 'rejected' : 'approved';
 
     await axios.post('http://localhost:4005/events', {
       type: 'COMMENT_MODERATED',
